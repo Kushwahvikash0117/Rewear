@@ -1,5 +1,6 @@
 import './App.css'
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import LoginPage from './pages/LoginPage';
@@ -14,6 +15,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         
         <Route path="/product-design" element={<ProductDesign />} />
+         <Route path="*" element={<Navigate to="/login" />} />
 
       </Routes>
     </Router>
