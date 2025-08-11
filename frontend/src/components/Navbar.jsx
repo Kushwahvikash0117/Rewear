@@ -1,27 +1,38 @@
-import React from 'react'
-import { useState } from 'react';
-export const Navbar = () => {
-    const [page, setPage] = useState("home");
+// components/Navbar.jsx
+import React from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 
-  const getBtnClass = (target) =>
-    `px-4 py-2 rounded-full ${page === target
-      ? "bg-[#D94F4F] text-white"
-      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+const Navbar = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const getBtnClass = (targetPath) =>
+    `px-4 py-2 rounded-full transition-colors duration-200 ${
+      currentPath === targetPath
+        ? "bg-[#D94F4F] text-white"
+        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
     }`;
+
   return (
-    <div className="min-h-screen">
-        {/* Navigation Bar */}
-        <nav className="p-4 flex justify-center gap-4 bg-white shadow sticky top-0 z-10">
-          <button onClick={() => setPage("home")} className={getBtnClass("home")}>
-            Home
-          </button>
-          <button onClick={() => setPage("listings")} className={getBtnClass("listings")}>
-            My Listings
-          </button>
-          <button onClick={() => setPage("swap")} className={getBtnClass("swap")}>
-            Swap Requests
-          </button>
-        </nav>
-      </div>
-  )
-}
+    <nav className="p-4 flex justify-center gap-4 bg-white shadow sticky top-0 z-10">
+      
+      <NavLink to="/" className={getBtnClass("/")}>
+        Home
+      </NavLink>
+      <NavLink to="/my-listings" className={getBtnClass("/my-listings")}>
+        My Listings
+      </NavLink>
+      <NavLink to="/swap-requests" className={getBtnClass("/swap-requests")}>
+        Swap Requests
+      </NavLink>
+      <NavLink to="/admin-panel" className={getBtnClass("/admin-panel")}>
+        Admin Panel
+      </NavLink>
+      <NavLink to="/product-design" className={getBtnClass("/product-design")}>
+        Product Design
+      </NavLink>
+    </nav>
+  );
+};
+
+export default Navbar;
