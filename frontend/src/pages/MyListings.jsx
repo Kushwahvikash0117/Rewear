@@ -32,10 +32,7 @@ function MyListings() {
     transition: "transform 0.2s ease",
   };
 
-  const cardHoverStyle = {
-    transform: "scale(1.02)",
-  };
-
+  
   return React.createElement(
     "div",
     { style: containerStyle },
